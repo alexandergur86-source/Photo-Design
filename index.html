@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Photo&Design</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Photos</h1>
+    </header>
+
+
+    <main>
+
+        <div class="gallery">
+
+            <button class="arrow left" onclick="prevPhoto()">
+                &#10094;
+            </button>
+
+            <img
+                id="photo"
+                src="../images/perf1.jpg"
+                alt="photo"
+                onclick="openFullscreen()"
+            >
+
+            <button class="arrow right" onclick="nextPhoto()">
+                &#10095;
+            </button>
+
+        </div>
+
+    </main>
+
+
+
+    <div id="fullscreen" class="fullscreen">
+
+        <button class="close" onclick="closeFullscreen()">
+            &times;
+        </button>
+
+        <button class="arrow fullscreen-left" onclick="prevPhoto()">
+            &#10094;
+        </button>
+
+        <img id="fullscreenPhoto" src="" alt="Фото">
+
+        <button class="arrow fullscreen-right" onclick="nextPhoto()">
+            &#10095;
+        </button>
+
+    </div>
+
+
+    <script>
+
+        const photos = [
+            "../images/perf1.jpg",
+            "../images/perf2.jpg",
+            "../images/perfspace1.jpg",
+            "../images/perfspace2.jpg",
+            "../images/perfspace3.jpg",
+            "../images/perfspace4.jpg",
+            "../images/perfspace5.jpg",
+            "../images/space.jpg",
+        ];
+
+        let currentPhoto = 0;
+
+
+        const photo = document.getElementById("photo");
+
+        const fullscreen = document.getElementById("fullscreen");
+
+        const fullscreenPhoto =
+            document.getElementById("fullscreenPhoto");
+
+
+
+        function showPhoto() {
+
+            photo.src = photos[currentPhoto];
+
+            fullscreenPhoto.src = photos[currentPhoto];
+
+        }
+
+
+
+        function nextPhoto() {
+
+            currentPhoto++;
+
+            if (currentPhoto >= photos.length) {
+                currentPhoto = 0;
+            }
+
+            showPhoto();
+        }
+
+
+
+        function prevPhoto() {
+
+            currentPhoto--;
+
+            if (currentPhoto < 0) {
+                currentPhoto = photos.length - 1;
+            }
+
+            showPhoto();
+        }
+
+
+
+        function openFullscreen() {
+
+            fullscreen.classList.add("active");
+
+            fullscreenPhoto.src = photos[currentPhoto];
+
+        }
+
+
+
+        function closeFullscreen() {
+
+            fullscreen.classList.remove("active");
+
+        }
+
+
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+                closeFullscreen();
+            }
+
+            if (event.key === "ArrowRight") {
+                nextPhoto();
+            }
+
+            if (event.key === "ArrowLeft") {
+                prevPhoto();
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
