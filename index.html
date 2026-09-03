@@ -24,12 +24,12 @@
                 &#10094;
             </button>
 
-            <img
-                id="photo"
-                src="/Photo-Design/images/perf1.jpg"
-                alt="photo"
-                onclick="openFullscreen()"
-            >
+        <img
+            id="photo"
+            src=""
+            alt="photo"
+            onclick="openFullscreen()"
+>
 
             <button class="arrow right" onclick="nextPhoto()">
                 &#10095;
@@ -62,7 +62,7 @@
 
     <script>
 
-    const photos = [
+const photos = [
     "/Photo-Design/images/perf1.jpg",
     "/Photo-Design/images/perf2.jpg",
     "/Photo-Design/images/perfspace1.jpg",
@@ -73,16 +73,13 @@
     "/Photo-Design/images/space.jpg"
 ];
 
-        let currentPhoto = 0;
+let currentPhoto = 0;
 
+const photo = document.getElementById("photo");
+const fullscreen = document.getElementById("fullscreen");
+const fullscreenPhoto = document.getElementById("fullscreenPhoto");
 
-        const photo = document.getElementById("photo");
-
-        const fullscreen = document.getElementById("fullscreen");
-
-        const fullscreenPhoto =
-            document.getElementById("fullscreenPhoto");
-
+showPhoto();
 
 
         function showPhoto() {
